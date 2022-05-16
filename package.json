@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/Premkumar-hulikoppe/React_Chat_Application#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
     "mongoose": "^6.3.3",
     "nodemon": "^2.0.16"
   }
