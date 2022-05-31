@@ -8,6 +8,7 @@ const colors = require("colors");
 const userRoutes = require("./Routes/userRoutes");
 
 dotenv.config();
+app.use(express.json());
 const PORT = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
