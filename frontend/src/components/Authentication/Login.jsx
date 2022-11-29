@@ -1,5 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
+
 import {
   VStack,
   FormControl,
@@ -9,17 +12,66 @@ import {
   InputRightElement,
   Button,
 } from "@chakra-ui/react";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     show ? setShow(false) : setShow(true);
   };
 
-  const submitHandler = () => {};
+  const submitHandler = async () => {
+    setLoading(true);
+    if (!email || !password) {
+      toast({
+        title: "Please Fill All the Credentials!",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+      setLoading(false);
+      return;
+    }
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        "http://localhost:5000/api/user/login",
+        { email, password },
+        config
+      );
+      toast({
+        title: "Login Successful",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+      navigate("/chats");
+    } catch (err) {
+      toast({
+        title: "Error Occured!",
+        description: err.message,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+      setLoading(false);
+    }
+  };
 
   return (
     <VStack spacing="4px">
@@ -55,6 +107,7 @@ const Login = () => {
         colorScheme="blue"
         style={{ marginTop: 15 }}
         onClick={submitHandler}
+        isLoading={loading}
       >
         Login
       </Button>
