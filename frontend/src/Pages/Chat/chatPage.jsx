@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 import { ChatState } from "../../context/chatProvider";
 import SideDrawer from "./SideDrawer";
 import MyChats from "./MyChats";
-import ChatBox from "./ChatBox";
+import ChatBox from "../ChatBox/ChatBox";
 
 const ChatPage = () => {
   const { user } = ChatState();
