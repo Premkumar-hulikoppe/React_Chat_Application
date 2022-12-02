@@ -8,7 +8,7 @@ import { getSender } from "../../config/ChatLogix";
 import GroupChatModal from "./GroupChatModal";
 import axios from "axios";
 
-export default function MyChats() {
+export default function MyChats({ fetchAgain, setFetchAgain }) {
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
   const toast = useToast();
   const [loggedUser, setLoggedUser] = useState();
@@ -41,7 +41,7 @@ export default function MyChats() {
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
-  }, []);
+  }, [fetchAgain]);
 
   return (
     <Box
