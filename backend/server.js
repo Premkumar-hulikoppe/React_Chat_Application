@@ -9,6 +9,7 @@ const userRoutes = require("./Routes/userRoutes");
 const chatRoutes = require("./Routes/chatRoutes");
 const cors = require("cors");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleWare");
+const messageRoutes = require("./Routes/messgeRoutes");
 
 dotenv.config();
 app.use(cors());
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/chats", chatRoutes);
+app.use("/api/messages", messageRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
