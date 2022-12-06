@@ -57,15 +57,17 @@ io.on("connection", (socket) => {
     console.log("user joined room : ", room);
   });
 
+  // for typing indicator
+  socket.on("typing", (room) => socket.in(room).emit("typing"));
+  socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));
+
   // send or new message
   socket.on("new message", (newMessageRecieved) => {
     var chat = newMessageRecieved.chat;
-    console.log("bew sms", newMessageRecieved);
     if (!chat.users) return console.log("chat.users not defined");
 
     chat.users.forEach((user) => {
       if (user._id == newMessageRecieved.sender._id) {
-        console.log("whats happening");
         return;
       } else {
         socket.in(user._id).emit("message recieved", newMessageRecieved);
