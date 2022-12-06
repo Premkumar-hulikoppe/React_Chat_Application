@@ -89,7 +89,6 @@ export default function SideDrawer() {
         config
       );
       setLoading(false);
-      console.log("data", data);
       setSearchResult(data);
     } catch (err) {
       toast({
@@ -179,7 +178,6 @@ export default function SideDrawer() {
                   key={notif._id}
                   onClick={() => {
                     setSelectedChat(notif.chat);
-                    console.log("done");
                     setNotification(
                       notification.filter((sms) => sms !== notif)
                     );
