@@ -12,6 +12,12 @@ The chat may be one-on-one chat or may be group chat. It is responsive in nature
    
    Backend   : Node JS, Express, MongoDB Atlas, Mongoose, npm, Socket.io
    ```
+   
+   
+## Deployment
+
+ - [FrontEnd](https://real-time-chat-mauve.vercel.app)
+ 
  ## Features
 
  | Serial No            | Feature                                                            |
