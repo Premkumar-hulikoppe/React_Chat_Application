@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
+import { ChatState } from "../../context/chatProvider";
 
 import {
   VStack,
@@ -21,6 +22,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
+  const { user, setUser } = ChatState();
 
   const handleClick = () => {
     show ? setShow(false) : setShow(true);
@@ -58,6 +60,7 @@ const Login = () => {
         position: "top",
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
+      setUser(data);
       setLoading(false);
       navigate("/chats");
     } catch (err) {
