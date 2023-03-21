@@ -14,6 +14,7 @@ import { IconButton } from "@chakra-ui/button";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { ViewIcon } from "@chakra-ui/icons";
 import React from "react";
+import dummyUserPic from "../../imgs/icons8-user-100.png";
 
 const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,9 +46,7 @@ const ProfileModal = ({ user, children }) => {
             <Image
               borderRadius="full"
               boxSize="150px"
-              src={
-                user.pic ? user.pic : "../../../src/imgs/icons8-user-100.png"
-              }
+              src={user.pic ? user.pic : dummyUserPic}
               alt={user.name}
             />
             <Text fontSize={{ base: "28px", md: "30px" }}>
