@@ -16,7 +16,7 @@ The chat may be one-on-one chat or may be group chat. It is responsive in nature
    
 ## Deployment
 
- - [FrontEnd](https://real-time-chat-mauve.vercel.app)
+ - [FrontEnd](https://react-chat-application-ebon.vercel.app/)
  
  ## Features
 
