@@ -45,7 +45,9 @@ const ProfileModal = ({ user, children }) => {
             <Image
               borderRadius="full"
               boxSize="150px"
-              src={user.pic}
+              src={
+                user.pic ? user.pic : "../../../src/imgs/icons8-user-100.png"
+              }
               alt={user.name}
             />
             <Text fontSize={{ base: "28px", md: "30px" }}>
