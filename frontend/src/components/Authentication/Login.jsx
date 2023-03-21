@@ -65,10 +65,9 @@ const Login = () => {
       navigate("/chats");
     } catch (err) {
       toast({
-        title: "Error Occured!",
-        description: err.message,
+        title: err?.response?.data,
         status: "error",
-        duration: 3000,
+        duration: 5000,
         isClosable: true,
         position: "top",
       });

@@ -11,6 +11,7 @@ import {
   InputRightElement,
   Button,
 } from "@chakra-ui/react";
+import { ChatState } from "../../context/chatProvider";
 import axios from "axios";
 
 const Signup = () => {
@@ -23,6 +24,7 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
+  const { user, setUser } = ChatState();
 
   const handleClick = () => {
     show ? setShow(false) : setShow(true);
@@ -115,12 +117,12 @@ const Signup = () => {
         position: "top",
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
+      setUser(data);
       setLoading(false);
       navigate("/chats");
     } catch (err) {
       toast({
-        title: "Error Occured!",
-        description: err.message,
+        title: err?.response?.data?.message,
         status: "error",
         duration: 3000,
         isClosable: true,
